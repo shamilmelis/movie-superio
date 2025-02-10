@@ -1,0 +1,173 @@
+@media screen and (max-width: 1100px) {
+  main {
+    padding-top: 50px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    .movie_carousel_section {
+      .container {
+        .swiper {
+          height: 400px;
+        }
+      }
+      .container .custom_prev {
+        opacity: 1;
+      }
+      .container .custom_next {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  main {
+    .movie_carousel_section {
+      .container {
+        .swiper {
+          height: 350px;
+        }
+        .inner_box {
+          .carousel_item {
+            .movie_title {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  main {
+    .movie_carousel_section {
+      .container {
+        .custom_prev {
+          opacity: 0 !important;
+          overflow: hidden;
+        }
+        .custom_next {
+          opacity: 0 !important;
+          overflow: hidden;
+        }
+        .swiper {
+          height: 300px;
+        }
+        .inner_box {
+          .carousel_item {
+            .premiere_block {
+              .movie_premiere_span {
+                font-size: 14px;
+              }
+            }
+            .movie_title {
+              font-size: 17px;
+            }
+            .carousel_item_info {
+              .movie_review_point {
+                font-size: 14px;
+              }
+              .movie_date {
+                font-size: 13px;
+              }
+              .movie_category {
+                font-size: 13px;
+              }
+              .movie_season {
+                font-size: 13px;
+              }
+              .movie_age_limit {
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .movie_category-carousel_section {
+      .container_category {
+        .category_inner_box {
+          .custom_prev_category {
+            display: none;
+          }
+          .custom_next_category {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .movie_subs-carousel_section {
+    .container_subs {
+      .subs_row {
+        .custom_prev_cards {
+          opacity: 0 !important;
+          overflow: hidden;
+        }
+        .custom_next_cards {
+          opacity: 0 !important;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .movie_subs-carousel_section {
+    .container_subs {
+      .subs_row {
+        .subs_inner {
+          .large_card_slide:hover {
+            transform: scale(1.1);
+            transition: 0.3s;
+            z-index: 4;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  main {
+    .movie_carousel_section {
+      .container {
+        .swiper {
+          height: 300px;
+        }
+        .inner_box {
+          .carousel_item {
+            .premiere_block {
+              .movie_premiere_span {
+                font-size: 10px;
+              }
+            }
+            .movie_title {
+              font-size: 14px;
+            }
+            .carousel_item_info {
+              .movie_review_point {
+                font-size: 13px;
+              }
+              .movie_date {
+                font-size: 12px;
+              }
+              .movie_category {
+                font-size: 12px;
+              }
+              .movie_season {
+                font-size: 12px;
+              }
+              .movie_age_limit {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

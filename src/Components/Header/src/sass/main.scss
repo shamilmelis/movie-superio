@@ -1,0 +1,188 @@
+body.Disabled {
+  overflow: hidden;
+}
+.body.Disabled {
+  overflow: hidden;
+}
+.wrapper {
+  position: relative;
+}
+.dark_background.Active {
+  overflow: visible;
+  opacity: 1;
+  transition: 0.3s;
+  height: 100%;
+}
+.dark_background {
+  overflow: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+  backdrop-filter: blur(2px);
+}
+
+.header_media.Fixed {
+  position: fixed;
+  width: 100%;
+}
+header {
+  background: #000;
+  z-index: 999;
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    .con_inner {
+      display: flex;
+      padding: 10px;
+      align-items: center;
+      gap: 15px;
+      .website_logo_block {
+        display: flex;
+        .title_text {
+          color: #fff;
+        }
+        .burger_block {
+          display: none;
+        }
+      }
+      .navigation_block {
+        flex-grow: 1;
+        display: flex;
+        gap: 20px;
+        opacity: 1;
+        overflow: visible;
+        .navigation_list_item {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          .navigation_links {
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            color: gainsboro;
+            font-weight: 500;
+          }
+          .bar_list_item.Active {
+            display: block;
+            transition: 0.3s;
+            opacity: 1;
+          }
+          .bar_list_item {
+            position: absolute;
+            top: 110%;
+            display: block;
+            opacity: 0;
+            transition: 0.3s;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            border-radius: 99em;
+          }
+        }
+      }
+      .search_block.Active {
+        flex-grow: 3;
+      }
+      .search_block {
+        display: flex;
+        align-items: center;
+        .navigation_search_input::placeholder {
+          color: gray;
+          font-family: 'Montserrat', sans-serif;
+        }
+        .navigation_search_input.Active {
+          overflow: visible;
+          opacity: 1;
+          transition: 0.3s;
+          width: auto;
+          height: auto;
+        }
+        .navigation_search_button_mobile {
+          display: none;
+        }
+        .navigation_search_input {
+          overflow: hidden;
+          width: 0;
+          height: 0;
+          opacity: 0;
+          transition: 0.3s;
+          background: none;
+          border: none;
+          outline: none;
+          color: #fff;
+          font-family: 'Montserrat', sans-serif;
+          flex-grow: 1;
+        }
+        .navigation_search_close_input:hover .close_svg {
+          color: #fff;
+          transition: 0.3s;
+        }
+        .navigation_search_close_input.Active {
+          overflow: visible;
+          opacity: 1;
+          transition: 0.3s;
+          width: auto;
+          height: auto;
+        }
+        .navigation_search_close_input {
+          overflow: hidden;
+          cursor: pointer;
+          width: 0;
+          height: 0;
+          background: none;
+          border: none;
+          opacity: 0;
+          transition: 0.3s;
+          .close_svg {
+            font-size: 24px;
+            color: gainsboro;
+            transition: 0.3s;
+          }
+        }
+        .navigation_search_button.Disabled {
+          overflow: hidden;
+          opacity: 0;
+          width: 0;
+          height: 0;
+          transition: 0.3s;
+        }
+        .navigation_search_button {
+          overflow: visible;
+          cursor: pointer;
+          width: auto;
+          height: auto;
+          background: none;
+          border: none;
+          opacity: 1;
+          transition: 0.3s;
+          .search_icon {
+            font-size: 20px;
+            color: gray;
+            transition: 0.3s;
+          }
+        }
+        .navigation_search_button:hover .search_icon {
+          color: #fff;
+          transition: 0.3s;
+        }
+      }
+      .auth_block {
+        display: flex;
+        gap: 10px;
+        .promocode_svg {
+         margin: 5px;
+          font-size: 20px;
+        }
+        .login_svg {
+          margin: 5px;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
