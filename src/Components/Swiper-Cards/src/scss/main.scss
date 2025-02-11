@@ -1,0 +1,130 @@
+.swiper_section {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 20px;
+  .swiper_container {
+    max-width: 1400px;
+    margin: 0 auto;
+    .swiper_box:hover .custom_prev_btn_1 {opacity: 1}
+    .swiper_box:hover .custom_next_btn_1 {opacity: 1}
+    .swiper_box:hover .custom_prev_btn_2 {opacity: 1}
+    .swiper_box:hover .custom_next_btn_2 {opacity: 1}
+    .swiper_box:hover .custom_prev_btn_3 {opacity: 1}
+    .swiper_box:hover .custom_next_btn_3 {opacity: 1}
+    .swiper_box {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .swiper_thematic {
+        color: #fff;
+      }
+      .swiper_slider {
+        display: flex;
+        max-width: 1400px;
+        overflow: visible;
+        .swiper_element {
+          position: relative;
+          width: 240px !important;
+          transition: 0.3s;
+        }
+      }
+      .custom_prev_btn_1 {
+        transition: 0.3s;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        background: green;
+        z-index: 99;
+        background: rgba(0, 0, 0, 0.3);
+        border: none;
+        color: #fff;
+        font-size: 23px;
+        left: 10px;
+        border-radius: 10px;
+        padding: 20px 12px;
+      }
+      .custom_next_btn_1 {
+        transition: 0.3s;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 99;
+        color: #fff;
+        font-size: 23px;
+        right: 10px;
+        border: none;
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 20px 12px;
+      }
+      .custom_prev_btn_2 {
+        transition: 0.3s;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        background: green;
+        z-index: 99;
+        background: rgba(0, 0, 0, 0.3);
+        border: none;
+        color: #fff;
+        font-size: 23px;
+        left: 10px;
+        border-radius: 10px;
+        padding: 20px 12px;
+      }
+      .custom_next_btn_2 {
+        transition: 0.3s;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 99;
+        color: #fff;
+        font-size: 23px;
+        right: 10px;
+        border: none;
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 20px 12px;
+      }
+      .custom_prev_btn_3 {
+        transition: 0.3s;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        background: green;
+        z-index: 99;
+        background: rgba(0, 0, 0, 0.3);
+        border: none;
+        color: #fff;
+        font-size: 23px;
+        left: 10px;
+        border-radius: 10px;
+        padding: 20px 12px;
+      }
+      .custom_next_btn_3 {
+        transition: 0.3s;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 99;
+        color: #fff;
+        font-size: 23px;
+        right: 10px;
+        border: none;
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 20px 12px;
+      }
+    }
+  }
+}

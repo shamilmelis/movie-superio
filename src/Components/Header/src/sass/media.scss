@@ -12,7 +12,7 @@
       .con_inner {
         flex-direction: column;
         align-items: flex-start;
-        max-height: 8vh;
+        max-height: 9vh;
         height: 100vh;
         transition: max-height 0.3s ease;
         overflow: hidden;
@@ -37,6 +37,7 @@
             width: 100% !important;
             height: auto !important;
             opacity: 1;
+            font-size: 17px;
           }
         }
         .auth_block {

@@ -5,9 +5,9 @@ import Header from "../../Components/Header";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation, Autoplay} from "swiper/modules";
+import {Navigation, Autoplay, FreeMode} from "swiper/modules";
 import Button from "@mui/material/Button";
-import LargeCard from "../../Components/Large-Card";
+import SwiperCards from "../../Components/Swiper-Cards";
 
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -27,27 +27,23 @@ import {
 import {NavLink} from "react-router-dom";
 
 const HomePage = () => {
-    const [topRatedMovies, setTopRatedMovies] = useState([])
     const [popularMoviesCollection, setPopularMoviesCollection] = useState([])
     const myApi = `d3cb3344ce59944618d84dfd56a74482`
+    const SWIPER_1 = ['swiper 1-1']
+    const SWIPER_2 = ['swiper 2-2']
 
     useEffect(() => {
-        axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${myApi}`)
-            .then(res => {
-                setPopularMoviesCollection(res.data.results)
-            })
         axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${myApi}`)
             .then(res => {
-                setTopRatedMovies(res.data.results)
+                setPopularMoviesCollection(res.data.results)
             })
     }, [myApi])
 
     useEffect(() => {
 
-    }, [popularMoviesCollection, topRatedMovies])
+    }, [popularMoviesCollection])
     setTimeout(() => {
         console.log(popularMoviesCollection)
-        console.log(topRatedMovies)
     }, 2500)
 
     return (
@@ -59,12 +55,13 @@ const HomePage = () => {
                         <Swiper
                             pagination={false}
                             centeredSlides={true}
-                            modules={[Navigation, Autoplay]}
+                            modules={[Navigation, Autoplay, FreeMode]}
                             className="inner_box swiper"
                             navigation={{
                                 prevEl: ".custom_prev",
                                 nextEl: ".custom_next"
                             }}
+                            freeMode={true}
                             autoplay={{
                                 delay: 2500,
                                 disableOnInteraction: false,
@@ -125,7 +122,7 @@ const HomePage = () => {
                     <div className="container_category">
                         <div className="category_inner_box">
                             <Swiper
-                                modules={[Navigation]}
+                                modules={[Navigation, FreeMode]}
                                 navigation={{
                                     prevEl: ".custom_prev_category",
                                     nextEl: ".custom_next_category"
@@ -133,7 +130,7 @@ const HomePage = () => {
                                 centeredSlides={false}
                                 spaceBetween={3}
                                 slidesPerView={'auto'}
-                                slidesPerGroup={5}
+                                slidesPerGroup={2}
                                 freeMode={true}
                                 mousewheel={true}
                                 className="category_item">
@@ -274,7 +271,7 @@ const HomePage = () => {
                                             textTransform: 'capitalize',
                                             backgroundColor: '#333333',
                                             fontSize: '17px',
-                                            fontFamily: 'Montserrat, sans-serif'
+                                            fontFamily: 'Montserrat, sans-serif',
                                         }} variant="contained">
                                             <FontAwesomeIcon className={'icons_in_button'} icon={faBook} /> Документальный
                                         </Button>
@@ -290,40 +287,9 @@ const HomePage = () => {
                         </div>
                     </div>
                 </section>
-                <section>
-                    <div className="movie_subs-carousel_section">
-                        <div className="container_subs">
-                            <div className={'subs_row'}>
-                                <h3 className={'head_text'}>Смотрят сейчас</h3>
-                                <Swiper
-                                    modules={[Navigation]}
-                                    navigation={{
-                                        prevEl: ".custom_prev_cards",
-                                        nextEl: ".custom_next_cards"
-                                    }}
-                                    slidesPerView={'auto'}
-                                    spaceBetween={3}
-                                    className="subs_inner">
-                                    {
-                                        topRatedMovies.map(movie => {
-                                            return (
-                                                <SwiperSlide className={'large_card_slide'}>
-                                                    <LargeCard movieInfo={movie}></LargeCard>
-                                                </SwiperSlide>
-                                            )
-                                        })
-                                    }
-                                </Swiper>
-                                <button className={'custom_prev_cards'}>
-                                    <FontAwesomeIcon icon={faAnglesLeft} />
-                                </button>
-                                <button className={'custom_next_cards'}>
-                                    <FontAwesomeIcon icon={faAnglesRight} />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <SwiperCards swiper_id={'1'} swiperThemathic={'Драмы'} themathicId={18}></SwiperCards>
+                <SwiperCards swiper_id={'2'} swiperThemathic={'Остросюжетное кино'} themathicId={53}></SwiperCards>
+                <SwiperCards swiper_id={'3'} swiperThemathic={'Семейные'}  themathicId={10751}></SwiperCards>
             </main>
         </div>
     )

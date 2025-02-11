@@ -1,11 +1,11 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import '../Large-Card/src/scss/main.scss'
-import '../Large-Card/src/scss/media.scss'
+import '../Small-Card/src/scss/main.scss'
+import '../Small-Card/src/scss/media.scss'
 import {NavLink} from "react-router-dom";
 import Button from "@mui/material/Button";
 import axios from "axios";
-const LargeCard = ({movieInfo}) => {
+const SmallCard = ({movieInfo}) => {
     const [movieId, setMovieId] = useState([])
     const myApi = `d3cb3344ce59944618d84dfd56a74482`
     useEffect(() => {
@@ -16,12 +16,12 @@ const LargeCard = ({movieInfo}) => {
             })
     }, [myApi])
     useEffect(() => {
-
+        console.log(movieId)
     }, [movieId, movieInfo])
 
     return (
         <div className={'card_box'}>
-            {movieInfo.release_date ? movieInfo.release_date.split().map(el => el.slice(0,4)) >= 2024 ? <span className={'premiere_span'}>Новинка</span> : '' : 'undefined'}
+            <span className={'premiere_span'}>Премьера</span>
             <NavLink to={'/'}></NavLink>
             <div className={'card_top_backblur'}>
 
@@ -42,4 +42,4 @@ const LargeCard = ({movieInfo}) => {
     )
 }
 
-export default LargeCard
+export default SmallCard

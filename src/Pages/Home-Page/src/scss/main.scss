@@ -129,6 +129,7 @@
   }
 }
 .movie_category-carousel_section {
+  padding: 0 0 0 20px;
   .container_category {
     .category_inner_box:hover .custom_prev_category {opacity: 1; transition: 0.3s}
     .category_inner_box:hover .custom_next_category {opacity: 1; transition: 0.3s}
@@ -183,69 +184,6 @@
         }
         .icons_in_button {
           margin: 5px;
-        }
-      }
-    }
-  }
-}
-
-.movie_subs-carousel_section {
-  overflow-x: hidden;
-  padding: 20px;
-  .container_subs {
-    max-width: 1400px;
-    margin: 0 auto;
-    .subs_row:hover .custom_prev_cards {opacity: 1}
-    .subs_row:hover .custom_next_cards {opacity: 1}
-    .subs_row {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      .head_text {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 20px;
-      }
-      .custom_prev_cards {
-        transition: 0.3s;
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-        cursor: pointer;
-        background: green;
-        z-index: 99;
-        background: rgba(0, 0, 0, 0.3);
-        border: none;
-        color: #fff;
-        font-size: 23px;
-        left: 10px;
-        border-radius: 10px;
-        padding: 20px 12px;
-      }
-      .custom_next_cards {
-        transition: 0.3s;
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-        cursor: pointer;
-        background: rgba(0, 0, 0, 0.3);
-        z-index: 99;
-        color: #fff;
-        font-size: 23px;
-        right: 10px;
-        border: none;
-        backdrop-filter: blur(10px);
-        border-radius: 10px;
-        padding: 20px 12px;
-      }
-      .subs_inner {
-        display: flex;
-        max-width: 1400px;
-        overflow: visible;
-        .large_card_slide {
-          position: relative;
-          width: 290px !important;
-          transition: 0.3s;
         }
       }
     }

@@ -1,0 +1,24 @@
+@media screen and (max-width: 1000px) {
+  .movie_subs-carousel_section {
+    .container_subs {
+      .custom_prev_cards {
+        opacity: 1;
+      }
+      .custom_next_cards {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .card_box:hover .card_bottom_info {
+    opacity: 1;
+    transition: 0.5s linear;
+  }
+
+  .card_box:hover .card_top_backblur {
+    opacity: 1;
+    transition: 0.3s linear;
+  }
+}
