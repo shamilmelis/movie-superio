@@ -5,6 +5,11 @@ import '../Large-Card/src/scss/media.scss'
 import {NavLink} from "react-router-dom";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faBookmark as solidBookmark } from "@fortawesome/free-solid-svg-icons";
+import { faBookmark as regularBookmark } from "@fortawesome/free-regular-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+library.add(solidBookmark, regularBookmark);
 const LargeCard = ({movieInfo}) => {
     const [movieId, setMovieId] = useState([])
     const myApi = `d3cb3344ce59944618d84dfd56a74482`
@@ -21,8 +26,15 @@ const LargeCard = ({movieInfo}) => {
 
     return (
         <div className={'card_box'}>
-            {movieInfo.release_date ? movieInfo.release_date.split().map(el => el.slice(0,4)) >= 2024 ? <span className={'premiere_span'}>Новинка</span> : '' : 'undefined'}
             <NavLink to={'/'}></NavLink>
+            <div className={'card_top_actions'}>
+                <div className={'save-to-favourite_box'}>
+                    <button className={'save-to-favourite_btn'}>
+                        <FontAwesomeIcon icon="fa-regular fa-bookmark" />
+                    </button>
+                    <span className={'save-to-favourite_text'}>Буду смотреть</span>
+                </div>
+            </div>
             <div className={'card_top_backblur'}>
 
             </div>
@@ -31,13 +43,14 @@ const LargeCard = ({movieInfo}) => {
                     <span className={'card_movie_point_review'} style={{
                         backgroundColor: movieInfo.vote_average > 7 ? '#48aaad' : 'green' && movieInfo.vote_average < 6 ? 'orange' : 'green'
                     }}>{movieInfo.vote_average ? movieInfo.vote_average.toString().slice(0,3) : 'undefined'}</span>
-                    <span className={'card_movie_date'}>{movieInfo.release_date ? movieInfo.release_date.toString().slice(0, 4) : 'undefined'}</span>
-                    <span className={'card_movie_genre'}>{movieId.genres ? movieId.genres[0].name : 'undefined'}</span>
-                    <span className={'card_movie_time'}>{movieId.runtime ? Math.floor(movieId.runtime / 60) + 'ч' + ' ' + movieId.runtime % 60 + 'мин' : 'undefined'}</span>
+                    <span className={'card_movie_title'}>{movieInfo.title ? movieInfo.title : 'undefined'}</span>
                 </div>
-                <Button variant="contained">Подробнее</Button>
+                <Button sx={{
+                    textTransform: 'capitalize'
+                }} variant="contained">Смотреть</Button>
             </div>
             <img src={`https://image.tmdb.org/t/p/original/${movieInfo.poster_path}`} alt="" className={'card_image'}/>
+            <h4 className={'card_movie_title-mobile'}>{movieInfo.title ? movieInfo.title : 'undefined'}</h4>
         </div>
     )
 }

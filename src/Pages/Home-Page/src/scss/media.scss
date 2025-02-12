@@ -114,6 +114,22 @@
       }
     }
   }
+  .cinema_description_section {
+    .cinema_description_container {
+      .box {
+        .inner_box {
+          max-width: 100%;
+          .cinema_description_title {
+            color: #fff;
+            font-size: 17px;
+          }
+          .cinema_description_pg {
+            color: gainsboro;
+            font-size: 13px;
+          }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 500px) {
@@ -170,4 +186,5 @@
       }
     }
   }
+}
 }

@@ -36,8 +36,12 @@ const SwiperCards = ({swiperThemathic, themathicId, swiper_id}) => {
                                 nextEl: `.custom_next_btn_${swiper_id}`
                             }}
                             slidesPerView={'auto'}
-                            spaceBetween={3}
+                            spaceBetween={10}
                             freeMode={true}
+                            freeModeMomentum={true}  // Плавность движения
+                            freeModeMomentumRatio={0.5} // Регулировка скорости торможения
+                            freeModeMomentumVelocityRatio={0.8} // Контроль скорости движения
+                            freeModeSticky={false}
                             className={`swiper_slider`}
                         >
                             {

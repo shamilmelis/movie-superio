@@ -129,8 +129,16 @@
   }
 }
 .movie_category-carousel_section {
-  padding: 0 0 0 20px;
+  padding: 20px;
   .container_category {
+    display: flex;
+    flex-direction: column;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 15px;
+    .category_genres_title {
+      color: #fff;
+    }
     .category_inner_box:hover .custom_prev_category {opacity: 1; transition: 0.3s}
     .category_inner_box:hover .custom_next_category {opacity: 1; transition: 0.3s}
     .category_inner_box {
@@ -185,6 +193,49 @@
         .icons_in_button {
           margin: 5px;
         }
+      }
+    }
+  }
+}
+
+.cinema_description_section {
+  padding: 20px;
+  .cinema_description_container {
+    max-width: 1400px;
+    margin: 0 auto;
+    .box {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-start;
+      .inner_box.Active {
+        max-height: 100vh;
+        transition: max-height 1s ease-in;
+      }
+      .inner_box {
+        display: flex;
+        flex-direction: column;
+        transition: max-height 1s ease-out;
+        gap: 15px;
+        max-width: 800px;
+        max-height: 110px;
+        overflow: hidden;
+        align-items: flex-start;
+        .cinema_description_title {
+          color: #fff;
+          font-size: 20px;
+        }
+        .cinema_description_pg {
+          color: gainsboro;
+          font-size: 15px;
+        }
+      }
+      .cinema_description_hide-btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: #fff;
+        font-size: 18px;
       }
     }
   }

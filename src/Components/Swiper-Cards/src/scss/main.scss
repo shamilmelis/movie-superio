@@ -1,8 +1,7 @@
 .swiper_section {
-  overflow-x: hidden;
-  overflow-y: hidden;
   padding: 20px;
   .swiper_container {
+    overflow-x: hidden;
     max-width: 1400px;
     margin: 0 auto;
     .swiper_box:hover .custom_prev_btn_1 {opacity: 1}
@@ -22,11 +21,9 @@
       .swiper_slider {
         display: flex;
         max-width: 1400px;
-        overflow: visible;
         .swiper_element {
           position: relative;
-          width: 240px !important;
-          transition: 0.3s;
+          width: 200px !important;
         }
       }
       .custom_prev_btn_1 {

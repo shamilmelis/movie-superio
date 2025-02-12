@@ -29,8 +29,7 @@ import {NavLink} from "react-router-dom";
 const HomePage = () => {
     const [popularMoviesCollection, setPopularMoviesCollection] = useState([])
     const myApi = `d3cb3344ce59944618d84dfd56a74482`
-    const SWIPER_1 = ['swiper 1-1']
-    const SWIPER_2 = ['swiper 2-2']
+    const [isCinemaDescr, setIsCinemaDescr] = useState(false)
 
     useEffect(() => {
         axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${myApi}`)
@@ -61,13 +60,16 @@ const HomePage = () => {
                                 prevEl: ".custom_prev",
                                 nextEl: ".custom_next"
                             }}
+                            spaceBetween={10}
                             freeMode={true}
+                            freeModeMomentum={true}  // Плавность движения
+                            freeModeMomentumRatio={0.5} // Регулировка скорости торможения
+                            freeModeMomentumVelocityRa
                             autoplay={{
                                 delay: 2500,
                                 disableOnInteraction: false,
                             }}
                             slidesPerView={"auto"}
-                            spaceBetween={10}
                             breakpoints={{
                                 1000: {
                                     slidesPerView: 2,
@@ -120,6 +122,7 @@ const HomePage = () => {
                 </section>
                 <section className={'movie_category-carousel_section'}>
                     <div className="container_category">
+                        <h3 className={'category_genres_title'}>Жанры фильмов:</h3>
                         <div className="category_inner_box">
                             <Swiper
                                 modules={[Navigation, FreeMode]}
@@ -128,10 +131,13 @@ const HomePage = () => {
                                     nextEl: ".custom_next_category"
                                 }}
                                 centeredSlides={false}
-                                spaceBetween={3}
                                 slidesPerView={'auto'}
                                 slidesPerGroup={2}
+                                spaceBetween={10}
                                 freeMode={true}
+                                freeModeMomentum={true}  // Плавность движения
+                                freeModeMomentumRatio={0.5} // Регулировка скорости торможения
+                                freeModeMomentumVelocityRa
                                 mousewheel={true}
                                 className="category_item">
                                 <SwiperSlide className={'category_item_button'}>
@@ -287,9 +293,25 @@ const HomePage = () => {
                         </div>
                     </div>
                 </section>
+                <section className={'cinema_description_section'}>
+                    <div className="cinema_description_container">
+                        <div className="box">
+                            <div className={isCinemaDescr === false ? 'inner_box' : 'inner_box Active'}>
+                                <h2 className={'cinema_description_title'}>Онлайн-кинотеатр superio: фильмы в хорошем качестве всегда приносят настоящее удовольствие</h2>
+                                <p className={'cinema_description_pg'}>
+                                    Случалось ли вам отказаться от просмотра интересного фильма из-за того, что его показывали в неудобное время? <br/>Приходилось ли искать в сети интернет, где смотреть фильмы онлайн? А спорить с домашними из-за выбора кино для просмотра по ТВ?
+                                    Все эти проблемы остались в прошлом! <br/><br/>Откройте для себя фильмы онлайн в HD-качестве с кинотеатром superio. <br/>Мы не просто освобождаем вас от необходимости идти в кинотеатр или изучать программу телепередач – у посетителей нашего ресурса гораздо больше возможностей.
+                                    <br/>Онлайн-кинотеатр superio – это самая большая коллекция отечественных и зарубежных фильмов в рунете. Наша видеотека насчитывает более 30 тысяч фильмов и видеороликов, доступных для просмотра онлайн, и постоянно пополняется.
+                                    Убедитесь в том, что смотреть онлайн – просто и удобно!
+                                </p>
+                            </div>
+                            <button className={'cinema_description_hide-btn'} onClick={() => setIsCinemaDescr(!isCinemaDescr)}>Свернуть</button>
+                        </div>
+                    </div>
+                </section>
                 <SwiperCards swiper_id={'1'} swiperThemathic={'Драмы'} themathicId={18}></SwiperCards>
                 <SwiperCards swiper_id={'2'} swiperThemathic={'Остросюжетное кино'} themathicId={53}></SwiperCards>
-                <SwiperCards swiper_id={'3'} swiperThemathic={'Семейные'}  themathicId={10751}></SwiperCards>
+                <SwiperCards swiper_id={'3'} swiperThemathic={'Мультфильмы'}  themathicId={10751}></SwiperCards>
             </main>
         </div>
     )
