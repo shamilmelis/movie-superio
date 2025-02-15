@@ -8,7 +8,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Autoplay, FreeMode} from "swiper/modules";
 import Button from "@mui/material/Button";
 import SwiperCards from "../../Components/Swiper-Cards";
-
+import Footer from "../../Components/Footer";
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
@@ -16,11 +16,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faAnglesLeft,
     faAnglesRight,
-    faFilm,
-    faClapperboard,
-    faHippo,
-    faLeaf,
-    faUtensils,
     faFaceSmile,
     faBook, faWandMagicSparkles, faMoon, faHeart, faRocket, faGhost, faMasksTheater, faGun
 } from "@fortawesome/free-solid-svg-icons";
@@ -41,12 +36,9 @@ const HomePage = () => {
     useEffect(() => {
 
     }, [popularMoviesCollection])
-    setTimeout(() => {
-        console.log(popularMoviesCollection)
-    }, 2500)
 
     return (
-        <div>
+        <div className={'website_wrapper'}>
             <Header></Header>
             <main>
                 <section className={'movie_carousel_section'}>
@@ -62,9 +54,9 @@ const HomePage = () => {
                             }}
                             spaceBetween={10}
                             freeMode={true}
-                            freeModeMomentum={true}  // Плавность движения
-                            freeModeMomentumRatio={0.5} // Регулировка скорости торможения
-                            freeModeMomentumVelocityRa
+                            freeModeMomentum={true}
+                            freeModeMomentumRatio={0.5}
+                            freeModeMomentumVelocityRatio={0.8}
                             autoplay={{
                                 delay: 2500,
                                 disableOnInteraction: false,
@@ -76,7 +68,7 @@ const HomePage = () => {
                                     loop: true,
                                 },
                                 600: {
-                                    slidesPerView: 2,
+                                    slidesPerView: 1,
                                     loop: true,
                                     centeredSlides: false,
                                 },
@@ -90,21 +82,17 @@ const HomePage = () => {
                             {
                                 popularMoviesCollection.map(movie => {
                                     return (
-                                        <SwiperSlide className="carousel_item">
+                                        <SwiperSlide key={movie.id} className="carousel_item">
                                             <div className={'premiere_block'}>
                                                 <span className={'movie_premiere_span'}>Премьера</span>
                                             </div>
                                             <div className={'movie_backBg'}></div>
-                                            <img className={'movie_backPoster'} src={movie.backdrop_path ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt=""/>
+                                            <img className={'movie_backPoster'} src={movie.poster_path ? `https://image.tmdb.org/t/p/original/${movie.poster_path}` : `https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt=""/>
                                             <h3 className={'movie_title'}>{movie.title ? movie.title : movie.title}</h3>
                                             <div className={'carousel_item_info'}>
                                                 <span className={'movie_review_point'} style={{
                                                     backgroundColor: movie.vote_average > 7 ? '#48aaad' : 'green' && movie.vote_average < 6 ? 'orange' : 'green'
                                                 }}>{movie.vote_average ? movie.vote_average.toString().slice(0, 3) : 'undefined'}</span>
-                                                <span className={'movie_date'}>{movie.release_date ? movie.release_date.slice(0, 4) : 'undefined'}</span>
-                                                <span className={'movie_category'}>Драмы</span>
-                                                <span className={'movie_season'}>1 сезон</span>
-                                                <span className={'movie_age_limit'}>18+</span>
                                             </div>
                                         </SwiperSlide>
                                     )
@@ -298,14 +286,13 @@ const HomePage = () => {
                         <div className="box">
                             <div className={isCinemaDescr === false ? 'inner_box' : 'inner_box Active'}>
                                 <h2 className={'cinema_description_title'}>Онлайн-кинотеатр superio: фильмы в хорошем качестве всегда приносят настоящее удовольствие</h2>
-                                <p className={'cinema_description_pg'}>
-                                    Случалось ли вам отказаться от просмотра интересного фильма из-за того, что его показывали в неудобное время? <br/>Приходилось ли искать в сети интернет, где смотреть фильмы онлайн? А спорить с домашними из-за выбора кино для просмотра по ТВ?
-                                    Все эти проблемы остались в прошлом! <br/><br/>Откройте для себя фильмы онлайн в HD-качестве с кинотеатром superio. <br/>Мы не просто освобождаем вас от необходимости идти в кинотеатр или изучать программу телепередач – у посетителей нашего ресурса гораздо больше возможностей.
-                                    <br/>Онлайн-кинотеатр superio – это самая большая коллекция отечественных и зарубежных фильмов в рунете. Наша видеотека насчитывает более 30 тысяч фильмов и видеороликов, доступных для просмотра онлайн, и постоянно пополняется.
-                                    Убедитесь в том, что смотреть онлайн – просто и удобно!
-                                </p>
+                                {!isCinemaDescr ? <p className={'cinema_description_pg'}>Случалось ли вам отказаться от просмотра интересного фильма из-за того, что его показывали в неудобное время?...</p> : <p className={'cinema_description_pg'}>Случалось ли вам отказаться от просмотра интересного фильма из-за того, что его показывали в неудобное время?
+                                    <br/>Приходилось ли искать в сети интернет, где смотреть фильмы онлайн? А спорить с домашними из-за выбора кино для просмотра по ТВ?
+                                    <br/><br/>Все эти проблемы остались в прошлом! Откройте для себя фильмы онлайн в HD-качестве с кинотеатром superio.
+                                    <br/><br/>Мы не просто освобождаем вас от необходимости идти в кинотеатр или изучать программу телепередач – у посетителей нашего ресурса гораздо больше возможностей.
+                                    <br/>Онлайн-кинотеатр superio – это самая большая коллекция отечественных и зарубежных фильмов в рунете.</p>}
                             </div>
-                            <button className={'cinema_description_hide-btn'} onClick={() => setIsCinemaDescr(!isCinemaDescr)}>Свернуть</button>
+                            <button className={'cinema_description_hide-btn'} onClick={() => setIsCinemaDescr(!isCinemaDescr)}>{!isCinemaDescr ? 'Подробнее' : 'Скрыть'}</button>
                         </div>
                     </div>
                 </section>
@@ -313,6 +300,7 @@ const HomePage = () => {
                 <SwiperCards swiper_id={'2'} swiperThemathic={'Остросюжетное кино'} themathicId={53}></SwiperCards>
                 <SwiperCards swiper_id={'3'} swiperThemathic={'Мультфильмы'}  themathicId={10751}></SwiperCards>
             </main>
+            <Footer></Footer>
         </div>
     )
 }

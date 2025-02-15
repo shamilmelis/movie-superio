@@ -17,12 +17,11 @@ const LargeCard = ({movieInfo}) => {
         axios.get(`https://api.themoviedb.org/3/movie/${movieInfo.id}?api_key=${myApi}`)
             .then(res => {
                 setMovieId(res.data)
-                console.log(movieId)
             })
-    }, [myApi])
+    }, [movieInfo.id, myApi])
     useEffect(() => {
 
-    }, [movieId, movieInfo])
+    }, [movieInfo, movieId])
 
     return (
         <div className={'card_box'}>
@@ -50,7 +49,7 @@ const LargeCard = ({movieInfo}) => {
                 }} variant="contained">Смотреть</Button>
             </div>
             <img src={`https://image.tmdb.org/t/p/original/${movieInfo.poster_path}`} alt="" className={'card_image'}/>
-            <h4 className={'card_movie_title-mobile'}>{movieInfo.title ? movieInfo.title : 'undefined'}</h4>
+            <h4 className={'card_movie_title-mobile'}>{movieInfo.title ? movieInfo.title.length > 14 ? movieInfo.title.slice(0, 14) + '...' : movieInfo.title : 'undefined'}</h4>
         </div>
     )
 }

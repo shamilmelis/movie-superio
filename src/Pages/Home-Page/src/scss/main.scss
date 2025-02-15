@@ -1,9 +1,14 @@
-* {
-
+.website_wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  main {
+    flex-grow: 1;
+  }
 }
 
 .movie_carousel_section {
-  padding: 50px 0 0;
+  padding: 0 20px;
   .container:hover .custom_prev {opacity: 1; transition: 0.3s}
   .container:hover .custom_next {opacity: 1; transition: 0.3s}
   .container {
@@ -208,17 +213,21 @@
       flex-direction: column;
       gap: 15px;
       align-items: flex-start;
+      background: #333333;
+      padding: 15px;
+      border-radius: 10px;
       .inner_box.Active {
-        max-height: 100vh;
-        transition: max-height 1s ease-in;
+        will-change: height;
+        max-height: 500px;
       }
       .inner_box {
+        will-change: height;
+        position: relative;
         display: flex;
         flex-direction: column;
-        transition: max-height 1s ease-out;
         gap: 15px;
         max-width: 800px;
-        max-height: 110px;
+        max-height: 100px;
         overflow: hidden;
         align-items: flex-start;
         .cinema_description_title {
@@ -230,12 +239,18 @@
           font-size: 15px;
         }
       }
+      .cinema_description_hide-btn:hover {
+        color: #fff;
+        transition: 0.2s;
+      }
       .cinema_description_hide-btn {
         border: none;
         background: none;
+        transition: 0.2s;
         cursor: pointer;
-        color: #fff;
-        font-size: 18px;
+        color: #c7c7c7;
+        font-size: 15px;
+        font-family: 'Montserrat', sans-serif;
       }
     }
   }

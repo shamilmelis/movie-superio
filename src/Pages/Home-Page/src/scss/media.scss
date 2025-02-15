@@ -45,6 +45,9 @@
   main {
     .movie_carousel_section {
       .container {
+        .swiper {
+          height: 400px;
+        }
         .custom_prev {
           opacity: 0 !important;
           overflow: hidden;
@@ -52,9 +55,6 @@
         .custom_next {
           opacity: 0 !important;
           overflow: hidden;
-        }
-        .swiper {
-          height: 300px;
         }
         .inner_box {
           .carousel_item {
@@ -151,9 +151,6 @@
   main {
     .movie_carousel_section {
       .container {
-        .swiper {
-          height: 300px;
-        }
         .inner_box {
           .carousel_item {
             .premiere_block {

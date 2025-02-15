@@ -18,11 +18,11 @@ const SwiperCards = ({swiperThemathic, themathicId, swiper_id}) => {
             .then(res => {
                 setTopRatedMovies(res.data.results)
             })
-    }, [myApi])
+    }, [myApi, themathicId])
 
     useEffect(() => {
 
-    }, [topRatedMovies, themathicId])
+    }, [topRatedMovies])
     return (
         <>
             <section className={`swiper_section`} key={swiper_id}>
@@ -47,8 +47,8 @@ const SwiperCards = ({swiperThemathic, themathicId, swiper_id}) => {
                             {
                                 topRatedMovies.map(movie => {
                                     return (
-                                        <SwiperSlide className={'swiper_element'}>
-                                            <LargeCard movieInfo={movie}></LargeCard>
+                                        <SwiperSlide key={movie.id} className={'swiper_element'}>
+                                            <LargeCard key={movie.id} movieInfo={movie}></LargeCard>
                                         </SwiperSlide>
                                     )
                                 })
