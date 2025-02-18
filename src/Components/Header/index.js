@@ -8,10 +8,15 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMagnifyingGlass, faGift, faXmark} from '@fortawesome/free-solid-svg-icons'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { Divide as Hamburger } from 'hamburger-react'
-const  Header = () => {
+import {removeUser} from "../../Redux/Slices/userSlices";
+import {useDispatch} from "react-redux";
+
+const  Header = ({userEmail, userAuth}) => {
     const [burgerMenu, setBurgerMenu] = useState(false)
     const [isSearch, setIsSearch] = useState(false)
     const inputFocus = useRef(null)
+    const dispatch = useDispatch();
+    const [openTools, setOpenTools] = useState(false)
     const navSearch = () => {
         setIsSearch(true)
         let body = document.querySelector('body')
@@ -77,21 +82,40 @@ const  Header = () => {
                                 <button onClick={() => closeNavSearch()} className={isSearch === true ? 'navigation_search_close_input Active' : 'navigation_search_close_input'}><FontAwesomeIcon className={'close_svg'} icon={faXmark} /></button>
                             </div>
                             <div className={'auth_block'}>
-                                <Button variant="contained" sx={{
-                                    fontFamily: 'Montserrat, sans-serif',
-                                    fontSize: '12px'
-                                }}>Оформить подписку</Button>
-                                <Button variant="text" sx={{
+                                {userAuth ?  <Button variant="contained" sx={{
+                                        fontFamily: 'Montserrat, sans-serif',
+                                        fontSize: '12px'
+                                    }}>Оформить подписку</Button> : ''}
+                                {userAuth ? <Button variant="text" sx={{
                                     backgroundColor: 'none',
                                     textTransform: 'none',
                                     color: 'gainsboro',
                                     fontFamily: 'Montserrat, sans-serif',
-                                }}><FontAwesomeIcon className={'promocode_svg'} icon={faGift}/>Ввести промокод</Button>
-                                <Button sx={{
+                                }}><FontAwesomeIcon className={'promocode_svg'} icon={faGift}/>Ввести промокод</Button> : ''}
+                                {userAuth ? <div className={'user-tools_block'}>
+                                    <Button onClick={() => setOpenTools(!openTools)} variant={"contained"} className={'user-name_span'} sx={{
+                                        color: "#000 !important",
+                                        textTransform: 'none',
+                                        fontSize: '15px !important',
+                                        backgroundColor: '#fff',
+                                    }}>{userEmail}</Button>
+                                    <div className={!openTools ? 'user-tools_inner' : 'user-tools_inner Active'}>
+                                        <Button sx={{
+                                            fontFamily: "Montserrat, sans-serif",
+                                            textTransform: "none",
+                                            color: '#000',
+                                        }}>Избранное</Button>
+                                        <Button onClick={() => dispatch(removeUser())} component={NavLink} sx={{
+                                            fontFamily: "Montserrat, sans-serif",
+                                            textTransform: "none",
+                                            color: 'red',
+                                        }}>Выйти</Button>
+                                    </div>
+                                </div> : <Button component={NavLink} to={'/login'} sx={{
                                     fontFamily: "Montserrat, sans-serif",
                                     textTransform: "none",
-                                    color: 'gainsboro'
-                                }}><AccountCircleOutlinedIcon className={'login_svg'}></AccountCircleOutlinedIcon>Войти</Button>
+                                    color: "#fff"
+                                }}><AccountCircleOutlinedIcon className={'login_svg'}></AccountCircleOutlinedIcon>Войти</Button>}
                             </div>
                         </div>
                     </div>

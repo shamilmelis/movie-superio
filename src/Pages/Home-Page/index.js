@@ -20,12 +20,17 @@ import {
     faBook, faWandMagicSparkles, faMoon, faHeart, faRocket, faGhost, faMasksTheater, faGun
 } from "@fortawesome/free-solid-svg-icons";
 import {NavLink} from "react-router-dom";
+import {useAuth} from '../../Hooks/use-auth'
+import {useDispatch} from "react-redux";
+import {removeUser} from "../../Redux/Slices/userSlices";
 
 const HomePage = () => {
+    const {isAuth, email} = useAuth()
+    const dispatch = useDispatch()
     const [popularMoviesCollection, setPopularMoviesCollection] = useState([])
     const myApi = `d3cb3344ce59944618d84dfd56a74482`
     const [isCinemaDescr, setIsCinemaDescr] = useState(false)
-
+    const [mobileImage, setMobileImage] = useState(false)
     useEffect(() => {
         axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${myApi}`)
             .then(res => {
@@ -36,10 +41,14 @@ const HomePage = () => {
     useEffect(() => {
 
     }, [popularMoviesCollection])
-
+    window.addEventListener('resize', () => {
+        if (window.innerWidth < 600) {
+            setMobileImage(true)
+        }
+    });
     return (
         <div className={'website_wrapper'}>
-            <Header></Header>
+            <Header userAuth={isAuth} userEmail={email}></Header>
             <main>
                 <section className={'movie_carousel_section'}>
                     <div className="container">
@@ -87,12 +96,12 @@ const HomePage = () => {
                                                 <span className={'movie_premiere_span'}>Премьера</span>
                                             </div>
                                             <div className={'movie_backBg'}></div>
-                                            <img className={'movie_backPoster'} src={movie.poster_path ? `https://image.tmdb.org/t/p/original/${movie.poster_path}` : `https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt=""/>
+                                            <img className={'movie_backPoster'} src={!mobileImage ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt=""/>
                                             <h3 className={'movie_title'}>{movie.title ? movie.title : movie.title}</h3>
                                             <div className={'carousel_item_info'}>
                                                 <span className={'movie_review_point'} style={{
                                                     backgroundColor: movie.vote_average > 7 ? '#48aaad' : 'green' && movie.vote_average < 6 ? 'orange' : 'green'
-                                                }}>{movie.vote_average ? movie.vote_average.toString().slice(0, 3) : 'undefined'}</span>
+                                                }}>{movie.vote_average ? movie.vote_average.toString().slice(0,3).length < 2 ? movie.vote_average.toString() + '.0' : movie.vote_average.toString().slice(0,3)  : 'undefined'}</span>
                                             </div>
                                         </SwiperSlide>
                                     )

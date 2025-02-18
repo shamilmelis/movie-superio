@@ -12,6 +12,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 library.add(solidBookmark, regularBookmark);
 const LargeCard = ({movieInfo}) => {
     const [movieId, setMovieId] = useState([])
+    const [appear, setAppear] = useState(false)
     const myApi = `d3cb3344ce59944618d84dfd56a74482`
     useEffect(() => {
         axios.get(`https://api.themoviedb.org/3/movie/${movieInfo.id}?api_key=${myApi}`)
@@ -28,10 +29,10 @@ const LargeCard = ({movieInfo}) => {
             <NavLink to={'/'}></NavLink>
             <div className={'card_top_actions'}>
                 <div className={'save-to-favourite_box'}>
-                    <button className={'save-to-favourite_btn'}>
+                    <button className={'save-to-favourite_btn'} onMouseEnter={() => setAppear(true)} onMouseLeave={() => setAppear(false)}>
                         <FontAwesomeIcon icon="fa-regular fa-bookmark" />
                     </button>
-                    <span className={'save-to-favourite_text'}>Буду смотреть</span>
+                    <span className={!appear ? 'save-to-favourite_text' : 'save-to-favourite_text Appear'}>Буду смотреть</span>
                 </div>
             </div>
             <div className={'card_top_backblur'}>
@@ -41,7 +42,7 @@ const LargeCard = ({movieInfo}) => {
                 <div className="card_info">
                     <span className={'card_movie_point_review'} style={{
                         backgroundColor: movieInfo.vote_average > 7 ? '#48aaad' : 'green' && movieInfo.vote_average < 6 ? 'orange' : 'green'
-                    }}>{movieInfo.vote_average ? movieInfo.vote_average.toString().slice(0,3) : 'undefined'}</span>
+                    }}>{movieInfo.vote_average ? movieInfo.vote_average.toString().slice(0,3).length < 2 ? movieInfo.vote_average.toString() + '.0' : movieInfo.vote_average.toString().slice(0,3)  : 'undefined'}</span>
                     <span className={'card_movie_title'}>{movieInfo.title ? movieInfo.title : 'undefined'}</span>
                 </div>
                 <Button sx={{

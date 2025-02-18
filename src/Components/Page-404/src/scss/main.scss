@@ -1,0 +1,18 @@
+.error_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  animation: appear 1s forwards;
+  .error_block {
+    span {
+      color: #fff;
+      font-size: 25px;
+    }
+  }
+}
+
+@keyframes appear {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
