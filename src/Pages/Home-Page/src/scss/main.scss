@@ -81,25 +81,15 @@
           z-index: 1;
           border-radius: 15px;
         }
+        .zaglushka_block {
+          flex-grow: 1;
+        }
         .movie_title {
           font-family: 'Montserrat', sans-serif;
           font-size: 25px;
           color: #fff;
           z-index: 3;
           padding: 15px 0;
-        }
-        .premiere_block {
-          z-index: 3;
-          display: flex;
-          align-items: flex-start;
-          flex-grow: 1;
-          .movie_premiere_span {
-            padding: 3px;
-            border-radius: 4px;
-            font-family: 'Montserrat', sans-serif;
-            color: #fff;
-            background: #8f00ff;
-          }
         }
         .carousel_item_info {
           display: flex;

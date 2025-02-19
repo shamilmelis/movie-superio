@@ -38,7 +38,6 @@ const  Header = ({userEmail, userAuth}) => {
         })
         e.target.nextElementSibling.className = 'bar_list_item Active'
     }
-
     useEffect(() => {
         if (isSearch) {
             inputFocus.current.focus()

@@ -49,7 +49,7 @@ const LargeCard = ({movieInfo}) => {
                     textTransform: 'capitalize'
                 }} variant="contained">Смотреть</Button>
             </div>
-            <img src={`https://image.tmdb.org/t/p/original/${movieInfo.poster_path}`} alt="" className={'card_image'}/>
+            <img src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`} alt="" className={'card_image'}/>
             <h4 className={'card_movie_title-mobile'}>{movieInfo.title ? movieInfo.title.length > 14 ? movieInfo.title.slice(0, 14) + '...' : movieInfo.title : 'undefined'}</h4>
         </div>
     )

@@ -17,16 +17,13 @@ import {
     faAnglesLeft,
     faAnglesRight,
     faFaceSmile,
-    faBook, faWandMagicSparkles, faMoon, faHeart, faRocket, faGhost, faMasksTheater, faGun
+    faBook, faWandMagicSparkles, faMoon, faHeart, faRocket, faGhost, faMasksTheater, faGun,faMap,faMagnifyingGlass
 } from "@fortawesome/free-solid-svg-icons";
 import {NavLink} from "react-router-dom";
 import {useAuth} from '../../Hooks/use-auth'
-import {useDispatch} from "react-redux";
-import {removeUser} from "../../Redux/Slices/userSlices";
 
 const HomePage = () => {
     const {isAuth, email} = useAuth()
-    const dispatch = useDispatch()
     const [popularMoviesCollection, setPopularMoviesCollection] = useState([])
     const myApi = `d3cb3344ce59944618d84dfd56a74482`
     const [isCinemaDescr, setIsCinemaDescr] = useState(false)
@@ -38,6 +35,10 @@ const HomePage = () => {
             })
     }, [myApi])
 
+    if (window.location.pathname === '/') {
+        let body = document.querySelector('body')
+        body.className = 'body'
+    }
     useEffect(() => {
 
     }, [popularMoviesCollection])
@@ -92,9 +93,7 @@ const HomePage = () => {
                                 popularMoviesCollection.map(movie => {
                                     return (
                                         <SwiperSlide key={movie.id} className="carousel_item">
-                                            <div className={'premiere_block'}>
-                                                <span className={'movie_premiere_span'}>Премьера</span>
-                                            </div>
+                                            <div className={'zaglushka_block'}></div>
                                             <div className={'movie_backBg'}></div>
                                             <img className={'movie_backPoster'} src={!mobileImage ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}` : `https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt=""/>
                                             <h3 className={'movie_title'}>{movie.title ? movie.title : movie.title}</h3>
@@ -142,8 +141,7 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif'
                                         }} variant="contained">
                                             <FontAwesomeIcon className={'icons_in_button'} icon={faGun} /> Экшн
@@ -155,8 +153,7 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif'
                                         }} variant="contained">
                                             <FontAwesomeIcon className={'icons_in_button'} icon={faFaceSmile} /> Комедия
@@ -168,8 +165,7 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif'
                                         }} variant="contained">
                                             <FontAwesomeIcon className={'icons_in_button'} icon={faMasksTheater} /> Драма
@@ -181,8 +177,7 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif'
                                         }} variant="contained">
                                             <FontAwesomeIcon className={'icons_in_button'} icon={faGhost} /> Ужасы
@@ -194,8 +189,7 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif'
                                         }} variant="contained">
                                             <FontAwesomeIcon className={'icons_in_button'} icon={faRocket} /> Фантастика
@@ -207,8 +201,7 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif'
                                         }} variant="contained">
                                             <FontAwesomeIcon className={'icons_in_button'} icon={faHeart} /> Мелодрама
@@ -220,8 +213,7 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif'
                                         }} variant="contained">
                                             <FontAwesomeIcon className={'icons_in_button'} icon={faMoon} /> Триллер
@@ -233,11 +225,10 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif'
                                         }} variant="contained">
-                                            <FontAwesomeIcon className={'icons_in_button'} icon={faMoon} /> Приключение
+                                            <FontAwesomeIcon className={'icons_in_button'} icon={faMap} /> Приключение
                                         </Button>
                                     </div>
                                 </SwiperSlide>
@@ -246,11 +237,10 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif'
                                         }} variant="contained">
-                                            <FontAwesomeIcon className={'icons_in_button'} icon={faMoon} /> Детекив
+                                            <FontAwesomeIcon className={'icons_in_button'} icon={faMagnifyingGlass} /> Детекив
                                         </Button>
                                     </div>
                                 </SwiperSlide>
@@ -259,8 +249,7 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif'
                                         }} variant="contained">
                                             <FontAwesomeIcon className={'icons_in_button'} icon={faWandMagicSparkles} /> Фэнтези
@@ -272,8 +261,7 @@ const HomePage = () => {
                                         <NavLink to={'/'} className={'category_item_route'}></NavLink>
                                         <Button size='large' sx={{
                                             textTransform: 'capitalize',
-                                            backgroundColor: '#333333',
-                                            fontSize: '17px',
+                                            fontSize: '14px',
                                             fontFamily: 'Montserrat, sans-serif',
                                         }} variant="contained">
                                             <FontAwesomeIcon className={'icons_in_button'} icon={faBook} /> Документальный

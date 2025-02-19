@@ -44,6 +44,7 @@
 @media screen and (max-width: 750px) {
   main {
     .movie_carousel_section {
+      padding: 0 5px;
       .container {
         .swiper {
           height: 400px;
@@ -88,6 +89,7 @@
       }
     }
     .movie_category-carousel_section {
+      padding: 0 10px;
       .container_category {
         .category_inner_box {
           .custom_prev_category {
@@ -115,6 +117,7 @@
     }
   }
   .cinema_description_section {
+    padding: 10px;
     .cinema_description_container {
       .box {
         .inner_box {
